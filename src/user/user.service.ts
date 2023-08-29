@@ -31,10 +31,10 @@ export class UserService {
     return result;
   }
 
-  async findOneByEmail(email: string): Promise<UserDetails | null> {
+  async findOneByEmail(email: string): Promise<UserDocument | null> {
     const user = await this.userModel.findOne({ email });
     if (!user) return null;
-    return this._getUserDetails(user);
+    return user;
   }
 
   async findOneById(id: string): Promise<UserDetails | null> {
