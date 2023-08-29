@@ -18,7 +18,7 @@ export class AuthService {
 
     const existingUser = await this.UserService.findOneByEmail(email);
 
-    if (existingUser) throw new Error('Email already in use');
+    if (existingUser) return 'User already exists';
 
     const hashedPassword = await this.hashPassword(password, 10);
 
