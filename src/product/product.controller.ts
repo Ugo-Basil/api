@@ -15,7 +15,7 @@ import { ProductDocument } from './product.schema';
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
-
+  @UseGuards(JwtGuard)
   @Post()
   createProduct(
     @Body('name') name: string,
@@ -36,6 +36,7 @@ export class ProductController {
     return this.productService.findOne(id);
   }
 
+  @UseGuards(JwtGuard)
   @Patch(':id')
   updateProduct(
     @Param('id') id: string,
